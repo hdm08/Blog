@@ -1,0 +1,121 @@
+{%    extends    "blog/base.html"    %}
+{%    load    static    %}
+
+{%    block    title    %}My    Blog{%    endblock    %}
+
+{%    block    content    %}
+
+<!-- Intro -->
+<section id="intro" class="tm-p-1-section-1">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="tm-section-text-container">
+                    <i class="tm-text-white">
+                        <p class="mb-0">
+                            Publish your passions your way. Whether you'd like to share your knowledge, experiences or
+                            the latest news, create a unique and beautiful blog for free.
+                    </i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Place -->
+<section id="our_place">
+    <div class="container-fluid">
+        <div class="row">
+            <div
+                    class="col-md-12 col-lg-6 tm-section-image-container tm-img-left-container"
+            >
+                <img src="{% static 'img/forty_image_01.jpg' %}" alt="Image" class="img-fluid"/>
+            </div>
+            <div class="col-md-12 col-lg-6">
+                <div class="tm-section-text-container-2">
+                    <h2
+                            class="tm-text-primary tm-section-title-mb tm-sm-bg-white-alpha"
+                    >
+                        ~David Meerman Scott
+                    </h2>
+                    <div class="tm-text-gray">
+                        <p class="mb-4">
+                            You can buy attention (advertising). You can beg for attention from the media (PR). You can
+                            bug people one at a time to get attention (sales). Or you can earn attention by creating
+                            something interesting and valuable and then publishing it online for free.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Fusce, Section 4 -->
+<section id="section_4" class="tm-section-4">
+    <div class="container-fluid">
+        <div class="row flex-column-reverse flex-lg-row">
+            <div class="col-md-12 col-lg-6 tm-text-left-container">
+                <div class="tm-section-text-container-3 tm-bg-white-alpha h-100">
+                    <h2 class="tm-text-accent tm-section-title-mb">
+                        ~Lauren Conrad </h2>
+                    <p class="mb-0">
+                        Blogging is a great way to show your talents and interests to prospective employers, while
+                        adding an edge to your resume. If you blog consistently it shows your dedication, passions and
+                        creativity – all of which are key attributes employers look for in job candidates.
+                    </p>
+                </div>
+            </div>
+            <div
+                    class="col-md-12 col-lg-6 tm-section-image-container tm-img-right-container"
+            >
+                <img
+                        src="{% static 'img/forty_image_02.jpg' %}"
+                        alt="Image"
+                        class="img-fluid tm-img-right"
+                />
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="gallery">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 tm-section-title-mb tm-gallery-title-col">
+                <h2 class="tm-section-title-2">Beautiful Rollovers</h2>
+                <hr class="tm-section-title-underline"/>
+            </div>
+
+            <div class="col-20">
+                <div class="grid">
+                    {% for post in posts %}
+                    <figure class="effect-duke">
+                        <img
+                                src="{% static 'img/forty_image_13.jpg' %}"
+                                alt="Image"
+                                class="img-fluid"
+                        />
+                        <figcaption>
+                            <a href="{{	post.get_absolute_url	}}"></a>
+                            <h2> {{ post.title }}</h2>
+
+                            <body> Published {{ post.publish }} by {{ post.author }}</body>
+
+
+                            {{ post.body|truncatewords:10|linebreaks }}
+
+                        </figcaption>
+                    </figure>
+                    {% endfor %}
+
+                </div>
+
+                {% include "pagination.html" with page=posts %}
+            </div>
+
+            {% endblock %}
+
+        </div>
+    </div>
+</section>
