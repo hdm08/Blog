@@ -1,1 +1,1 @@
-web: gunicorn educa.wsgi
+web: gunicorn Blog_Web_Application.wsgi
